@@ -8,4 +8,5 @@ import com.example.cms.model.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
+	// Repository layer
 }
