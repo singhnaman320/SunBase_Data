@@ -19,7 +19,9 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer registerCustomer(Customer customer) throws CustomerNotFoundException {
 		// TODO Auto-generated method stub
-		return null;
+		Customer saveCustomer = customerRepository.save(customer);
+		
+		return saveCustomer;
 	}
 
 	@Override
