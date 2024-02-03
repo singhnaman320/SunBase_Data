@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.cms.exception.CustomerNotFoundException;
+import com.example.cms.model.Authority;
 import com.example.cms.model.Customer;
 import com.example.cms.repository.CustomerRepository;
 
@@ -19,9 +20,16 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer registerCustomer(Customer customer) throws CustomerNotFoundException {
 		// TODO Auto-generated method stub
-		Customer saveCustomer = customerRepository.save(customer);
 		
-		return saveCustomer;
+		List<Authority> authorities= customer.getAuthorities();
+		
+		for(Authority authority:authorities) {
+			
+			authority.setCustomer(customer);;
+		}
+		
+		return customerRepository.save(customer);
+
 	}
 
 	@Override
